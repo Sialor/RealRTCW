@@ -28,6 +28,8 @@ If you have questions concerning this license or the applicable additional terms
 
 #include "g_local.h"
 
+#include "../steam/steam.h"
+
 #define     GENERIC_DAMAGE  6
 
 int snd_boardbreak;
@@ -3254,6 +3256,10 @@ void Use_props_grammofon(gentity_t* ent, gentity_t* self, gentity_t* activator) 
 		ent->Name = "noactive";
 		ent->s.oldloopSound = ent->s.loopSound;
 		ent->s.loopSound = 0;
+	if (( !g_cheats.integer ) && (strstr (level.scriptAI, "Rovno_3") || (strstr (level.scriptAI, "Rovno_5")) ))
+	{
+    steamSetAchievement("ACH_VICTORS_MUSIC");
+	}
 	}
 	else {
 		ent->Name = "active";

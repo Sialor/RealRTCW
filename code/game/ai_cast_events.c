@@ -179,48 +179,7 @@ void AICast_Die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				meansOfDeath, meansOfDeath == MOD_PANZERFAUST);
 		OutputDebugStringA(x);
 	}*/
-	
-	
-	if(self->aiCharacter == AICHAR_LOPER && killerPlayer && modPanzerfaust)
-	{
-		if ( !g_cheats.integer )
-		{
-		steamSetAchievement("ACH_LOPER_ROCKET");
-		}
-	}
 
-	if(self->aiCharacter == AICHAR_PROTOSOLDIER && killerEnv && modFalling)
-	{
-		if ( !g_cheats.integer ) 
-		{
-		steamSetAchievement("ACH_PROTO_FALL");
-		}
-	}
-
-		
-	if(self->aiCharacter == AICHAR_ELITEGUARD && killerPlayer && modKicked)
-	{
-		if ( !g_cheats.integer ) 
-		{
-		steamSetAchievement("ACH_ELITE_FOOT");
-		}
-	}
-
-	if(self->aiCharacter == AICHAR_PROTOSOLDIER && killerPlayer && modKnife)
-	{
-		if ( !g_cheats.integer ) 
-		{
-		steamSetAchievement("ACH_PROTO_KNIFE");
-		}
-	}
-
-		if(self->aiCharacter == AICHAR_HEINRICH && killerEnv && modCrush)
-	{
-		if ( !g_cheats.integer ) 
-		{
-		steamSetAchievement("ACH_HEIN_NOSHOT");
-		}
-	}
 
 
 
