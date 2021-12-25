@@ -2523,7 +2523,7 @@ qboolean AICast_ScriptAction_Achievement_BLITZKRIEG( cast_state_t *cs, char *par
 	playtime = AICast_PlayTime( player->s.number );
 	}
 
-    if ( playtime <= 600000 ) 
+    if ( playtime <= 300000 ) 
 	{
 	if ( !g_cheats.integer ) 
 	{
