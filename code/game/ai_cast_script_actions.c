@@ -2448,7 +2448,7 @@ qboolean AICast_ScriptAction_ChangeLevel( cast_state_t *cs, char *params ) {
 		endgame = qtrue;
 	}
 
-	if ( !endgame ) {
+	//if ( !endgame ) {
 
 		// check for missing objectives
 		for ( i = 0; i < level.numObjectives; i++ ) {
@@ -2462,7 +2462,7 @@ qboolean AICast_ScriptAction_ChangeLevel( cast_state_t *cs, char *params ) {
 			G_SavePersistant( newstr ); // save persistent data if required
 
 		}
-	}
+	//}
 
 
 	if ( !silent && !endgame ) {
