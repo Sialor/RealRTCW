@@ -707,6 +707,7 @@ void G_CheckForCursorHints( gentity_t *ent ) {
 			} else if ( checkEnt->s.eType == ET_ALARMBOX )      {
 				if ( checkEnt->health > 0 ) {
 //					hintDist	= CH_BREAKABLE_DIST;
+                    hintDist = CH_ACTIVATE_DIST;
 					hintType    = HINT_ACTIVATE;
 				}
 			} else if ( checkEnt->s.eType == ET_ITEM )      {
@@ -1341,11 +1342,6 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	// general initialization
 	G_FindTeams();
 
-	// make sure we have flags for CTF, etc
-	if ( g_gametype.integer >= GT_TEAM ) {
-		G_CheckTeamItems();
-	}
-
 	SaveRegisteredItems();
 
 	if ( trap_Cvar_VariableIntegerValue( "g_gametype" ) != GT_SINGLE_PLAYER ) {
@@ -1363,6 +1359,12 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	}
 
 	G_RemapTeamShaders();
+
+	// Load ammo parameters for all weapons
+	for ( weapon_t weaponNum = WP_KNIFE; weaponNum < WP_NUM_WEAPONS; weaponNum++ ) {
+		G_LoadAmmoTable( weaponNum );
+		BG_SetWeaponForSkill( weaponNum, g_gameskill.integer );
+	}
 
 	trap_SetConfigstring( CS_INTERMISSION, "" );
 }
