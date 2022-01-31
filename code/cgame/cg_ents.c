@@ -1225,9 +1225,12 @@ static void CG_Missile( centity_t *cent ) {
 		CG_S_AddLoopingSound( cent->currentState.number, cent->lerpOrigin, velocity, weapon->missileSound, 0 );
 				}
 			}
-		} else {
+		} else 	if ( cent->currentState.weapon == WP_DYNAMITE ) {
 			vec3_t velocity;
-
+			BG_EvaluateTrajectoryDelta( &cent->currentState.pos, cg.time, velocity );
+			CG_S_AddLoopingSound( cent->currentState.number, cent->lerpOrigin, velocity, weapon->spindownSound, 255 );
+	} else {
+			vec3_t velocity;
 			BG_EvaluateTrajectoryDelta( &cent->currentState.pos, cg.time, velocity, qfalse, -1 );
 		    CG_S_AddLoopingSound( cent->currentState.number, cent->lerpOrigin, velocity, weapon->missileSound, 255 );
 		}
