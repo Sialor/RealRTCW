@@ -396,11 +396,16 @@ M_think
 */
 void M_think( gentity_t *ent ) {
 	gentity_t *tent;
+	int contents;       
+
+	contents = trap_PointContents( ent->s.origin, -1 );
 
 	ent->count++;
 
-//	if (ent->count == 1)
-//		Concussive_fx (ent);	//----(SA)	moved to G_ExplodeMissile()
+	if ( contents & MASK_WATER ) 
+	{
+	return; 
+	}
 
 	if ( ent->count == ent->health ) {
 		ent->think = G_FreeEntity;
@@ -1102,7 +1107,6 @@ fire_rocket
 */
 gentity_t *fire_rocket( gentity_t *self, vec3_t start, vec3_t dir ) {
 	gentity_t   *bolt;
-//qboolean	isPlayer = (self->client && !self->aiCharacter);	// Knightmare added
 
 	VectorNormalize( dir );
 
@@ -1450,7 +1454,6 @@ fire_mortar
 */
 gentity_t *fire_mortar( gentity_t *self, vec3_t start, vec3_t dir ) {
 	gentity_t   *bolt;
-	qboolean	isPlayer = (self->client && !self->aiCharacter);	// Knightmare added
 
 //	VectorNormalize (dir);
 
