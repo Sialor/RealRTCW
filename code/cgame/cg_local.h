@@ -628,23 +628,13 @@ typedef enum {
 } barrelType_t;
 
 typedef enum {
-	W_TP_MODEL = 0,         //	third person model
+	W_TP_MODEL,         //	third person model
 	W_FP_MODEL,         //	first person model
 	W_PU_MODEL,         //	pickup model
+	W_FP_MODEL_SWAP,    //	swap out model
+	W_SKTP_MODEL,       //	SKELETAL version third person model
 	W_NUM_TYPES
 } modelViewType_t;
-
-
-typedef struct partModel_s {
-	char tagName[MAX_QPATH];
-	qhandle_t model;
-	qhandle_t skin[3];              // 0: neutral, 1: axis, 2: allied
-} partModel_t;
-
-typedef struct weaponModel_s {
-	qhandle_t model;
-	qhandle_t skin[3];              // 0: neutral, 1: axis, 2: allied
-} weaponModel_t;
 
 // each WP_* weapon enum has an associated weaponInfo_t
 // that contains media references necessary to present the
@@ -661,17 +651,17 @@ typedef struct weaponInfo_s {
 
 //----(SA)	end
 
-	qboolean droppedAnglesHack;
-
 	qhandle_t handsModel;               // the hands don't actually draw, they just position the weapon
 
 	qhandle_t standModel;               // not drawn.  tags used for positioning weapons for pickup
 
 //----(SA) mod for 1st/3rd person weap views
-	weaponModel_t weaponModel[W_NUM_TYPES];
-	partModel_t partModels[W_NUM_TYPES][W_MAX_PARTS];
+	qhandle_t weaponModel[W_NUM_TYPES];
+	qhandle_t wpPartModels[W_NUM_TYPES][W_MAX_PARTS];
 	qhandle_t flashModel[W_NUM_TYPES];
-	qhandle_t modModels[6];  
+	qhandle_t modModel[W_NUM_TYPES];        // like the scope for the rifles
+
+
 //----(SA) end
 
 	pose_t position;                    // wolf locations (high, low, knife, pistol, shoulder, throw)  defines are WPOS_HIGH, WPOS_LOW, WPOS_KNIFE, WPOS_PISTOL, WPOS_SHOULDER, WPOS_THROW
@@ -712,8 +702,6 @@ typedef struct weaponInfo_s {
 
 	sfxHandle_t spinupSound;        //----(SA)	added // sound started when fire button goes down, and stepped on when the first fire event happens
 	sfxHandle_t spindownSound;      //----(SA)	added // sound called if the above is running but player doesn't follow through and fire
-
-	vec3_t weaponPosition;
 } weaponInfo_t;
 
 
@@ -1345,7 +1333,6 @@ typedef struct {
 	sfxHandle_t sfx_rockexpDist;
 	sfxHandle_t sfx_grenexp;
 	sfxHandle_t sfx_grenexpDist;
-	sfxHandle_t sfx_grenexpWater;
 	sfxHandle_t sfx_dynamiteexp;
 	sfxHandle_t sfx_dynamiteexpDist;  
 	sfxHandle_t sfx_barrelexp; 
@@ -1857,8 +1844,6 @@ extern vmCvar_t int_cl_timenudge;
 
 extern vmCvar_t cg_bodysink;
 
-extern vmCvar_t cg_gunPosLock;
-
 //
 // cg_main.c
 //
@@ -2074,7 +2059,7 @@ void CG_WeaponSuggest( int weap );
 
 void CG_FinishWeaponChange( int lastweap, int newweap );
 
-void CG_RegisterWeapon( int weaponNum, qboolean force );
+void CG_RegisterWeapon( int weaponNum );
 void CG_RegisterItemVisuals( int itemNum );
 
 void CG_FireWeapon( centity_t *cent );   //----(SA)	modified.

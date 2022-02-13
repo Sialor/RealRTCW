@@ -303,8 +303,6 @@ vmCvar_t int_cl_timenudge;
 
 vmCvar_t cg_bodysink;
 
-vmCvar_t cg_gunPosLock;
-
 typedef struct {
 	vmCvar_t    *vmCvar;
 	char        *cvarName;
@@ -533,8 +531,6 @@ cvarTable_t cvarTable[] = {
 	{ &cg_snipersCrosshair, "cg_snipersCrosshair", "1", CVAR_ARCHIVE },
 
 	{ &cg_bodysink, "g_bodysink", "0", CVAR_ARCHIVE },
-	
-	{ &cg_gunPosLock, "cg_gunposlock", "1", CVAR_ARCHIVE},
 };
 int cvarTableSize = ARRAY_LEN( cvarTable );
 void CG_setClientFlags( void );
@@ -1224,7 +1220,6 @@ static void CG_RegisterSounds( void ) {
     // Grenades
 	cgs.media.sfx_grenexp = trap_S_RegisterSound( "sound/weapons/grenade/grenade_explode.wav" );
     cgs.media.sfx_grenexpDist = trap_S_RegisterSound( "sound/weapons/grenade/grenade_explode_far.wav" );
-	cgs.media.sfx_grenexpWater =    trap_S_RegisterSound( "sound/weapons/grenade/grenade_explode_water.wav");
 	// Dynamite
 	cgs.media.sfx_dynamiteexp = trap_S_RegisterSound( "sound/weapons/dynamite/dynamite_exp.wav" );
 	cgs.media.sfx_dynamiteexpDist = trap_S_RegisterSound( "sound/weapons/dynamite/dynamite_exp_dist.wav" );   
@@ -1475,9 +1470,9 @@ static void CG_RegisterGraphics( void ) {
 
 	CG_LoadingString( " - models" );
 
-	cgs.media.machinegunBrassModel = trap_R_RegisterModel( "models/weapons/shells/m_shell.md3" );
-	cgs.media.panzerfaustBrassModel = trap_R_RegisterModel( "models/weapons/shells/pf_shell.md3" );
-	cgs.media.smallgunBrassModel = trap_R_RegisterModel( "models/weapons/shells/sm_shell.md3" );
+	cgs.media.machinegunBrassModel = trap_R_RegisterModel( "models/weapons2/shells/m_shell.md3" );
+	cgs.media.panzerfaustBrassModel = trap_R_RegisterModel( "models/weapons2/shells/pf_shell.md3" );
+	cgs.media.smallgunBrassModel = trap_R_RegisterModel( "models/weapons2/shells/sm_shell.md3" );
 
 	//----(SA) wolf debris
 	cgs.media.debBlock[0] = trap_R_RegisterModel( "models/mapobjects/debris/brick1.md3" );
@@ -1641,7 +1636,7 @@ static void CG_RegisterGraphics( void ) {
 	CG_LoadingString( " - weapons" );
 	for ( i = WP_KNIFE; i < WP_GAUNTLET; i++ ) {
 //		CG_LoadingString( va("   - %d", i) );
-			CG_RegisterWeapon( i, qfalse );
+		CG_RegisterWeapon( i );
 	}
 
 // END
@@ -1652,7 +1647,11 @@ static void CG_RegisterGraphics( void ) {
 
 	CG_LoadingString( " - items" );
 	for ( i = 1 ; i < bg_numItems ; i++ ) {
-		CG_RegisterItemVisuals( i );
+		if ( items[ i ] == '1' || cg_buildScript.integer ) {
+			// TODO: get weapons added to the list that are 'set' from a script
+			CG_LoadingItem( i );
+			CG_RegisterItemVisuals( i );
+		}
 	}
 
 	// wall marks

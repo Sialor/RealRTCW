@@ -145,15 +145,6 @@ char *Sys_SteamPath( void )
 	return steamPath;
 }
 	
-/*
-================
-Sys_SteamWorkshopPath
-================
-*/
-char *Sys_SteamWorkshopPath( void )
-{
-	return realsteamPath;
-}
 
 #endif
 

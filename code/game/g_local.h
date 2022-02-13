@@ -781,6 +781,7 @@ void Cmd_FollowCycle_f( gentity_t *ent, int dir );
 //
 // g_items.c
 //
+void G_CheckTeamItems( void );
 void G_RunItem( gentity_t *ent );
 void RespawnItem( gentity_t *ent );
 
@@ -969,7 +970,6 @@ qboolean G_FilterPacket( char *from );
 // g_weapon.c
 //
 void FireWeapon( gentity_t *ent );
-void G_LoadAmmoTable( weapon_t weaponNum );
 
 //
 // g_cmds.c
@@ -1085,7 +1085,6 @@ float AngleDifference( float ang1, float ang2 );
 
 // g_props.c
 void Props_Chair_Skyboxtouch( gentity_t *ent );
-void Use_props_grammofon(gentity_t* ent, gentity_t* self, gentity_t* activator);
 
 #include "g_team.h" // teamplay specific stuff
 

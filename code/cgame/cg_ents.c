@@ -1019,7 +1019,7 @@ static void CG_Item( centity_t *cent ) {
 			ent.nonNormalizedAxes = qtrue;
 
 		} else {                                // then default to laying it on it's side
-			if ( weaponInfo->droppedAnglesHack ) {
+			if ( !cg_items[es->modelindex].models[2] ) {
 				cent->lerpAngles[2] += 90;
 			}
 
@@ -1060,8 +1060,8 @@ static void CG_Item( centity_t *cent ) {
 							   // try to load it first, and if it fails, default to the itemlist model
 		ent.hModel = cgs.gameModels[ es->modelindex2 ];
 	} else {
-		if ( item->giType == IT_WEAPON ) {	// check if there's a specific model for weapon pickup placement
-			ent.hModel = cg_weapons[item->giWeapon].weaponModel[W_PU_MODEL].model;
+		if ( item->giType == IT_WEAPON && cg_items[es->modelindex].models[2] ) {	// check if there's a specific model for weapon pickup placement
+			ent.hModel = cg_items[es->modelindex].models[2];
 		} else if ( item->giType == IT_HEALTH || item->giType == IT_AMMO || item->giType == IT_POWERUP ) {
 			if ( es->density < ( 1 << 9 ) ) {  // (10 bits of data transmission for density)
 				ent.hModel = cg_items[es->modelindex].models[es->density];  // multi-state powerups store their state in 'density'
@@ -1233,12 +1233,6 @@ static void CG_Missile( centity_t *cent ) {
 		}
 	}
 	
-		if ( cent->currentState.weapon == WP_DYNAMITE ) {
-			vec3_t velocity;
-			BG_EvaluateTrajectoryDelta( &cent->currentState.pos, cg.time, velocity );
-			CG_S_AddLoopingSound( cent->currentState.number, cent->lerpOrigin, velocity, weapon->spindownSound, 255 );
-	}
-
 	// create the render entity
 	memset( &ent, 0, sizeof( ent ) );
 	VectorCopy( cent->lerpOrigin, ent.origin );
