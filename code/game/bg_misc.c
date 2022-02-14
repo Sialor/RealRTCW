@@ -4345,18 +4345,15 @@ char *BG_GetWeaponFilename( weapon_t weaponNum )
 		case WP_SILENCER:          return "silencer.weap";
 		case WP_COLT:              return "colt.weap";
 		case WP_AKIMBO:            return "akimbo.weap";
-		case WP_TT33:              return "tt33.weap";
 		case WP_REVOLVER:          return "revolver.weap";
 		case WP_THOMPSON:          return "thompson.weap";
 		case WP_STEN:              return "sten.weap";
 		case WP_MP34:              return "mp34.weap";
-		case WP_PPSH:              return "ppsh.weap";
 		case WP_MP40:              return "mp40.weap";
 		case WP_MAUSER:            return "mauser.weap";
 		case WP_SNIPERRIFLE:       return "sniperrifle.weap";
 		case WP_GARAND:            return "garand.weap";
 		case WP_SNOOPERSCOPE:      return "snooper.weap";
-		case WP_MOSIN:             return "mosin.weap";
 		case WP_G43:               return "g43.weap";
 		case WP_M1GARAND:          return "m1garand.weap";
 		case WP_FG42:              return "fg42.weap";
