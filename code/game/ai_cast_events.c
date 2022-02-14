@@ -164,15 +164,10 @@ void AICast_Die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	qboolean nogib = qtrue;
 	char mapname[MAX_QPATH];
 	
-	qboolean modPanzerfaust = (meansOfDeath == MOD_ROCKET || meansOfDeath == MOD_ROCKET_SPLASH);
 	qboolean modGL = (meansOfDeath == MOD_M7 );
 	qboolean modBr = (meansOfDeath == MOD_BROWNING );
 	qboolean modAir = (meansOfDeath == MOD_AIRSTRIKE );
 	qboolean modGas = (meansOfDeath == MOD_POISON_GAS );
-	qboolean modKicked = (meansOfDeath == MOD_KICKED);
-	qboolean modKnife = (meansOfDeath == MOD_KNIFE);
-	qboolean modCrush = (meansOfDeath == MOD_CRUSH);
-	qboolean modFalling = (meansOfDeath == MOD_FALLING);
 	qboolean killerPlayer	 = attacker && attacker->client && !( attacker->aiCharacter );
 	qboolean killerEnv	 = attacker && !(attacker->client) && !( attacker->aiCharacter );
 	
