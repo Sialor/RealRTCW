@@ -977,23 +977,23 @@ weapon_binoculars (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 		"key_binocs",
 		"sound/misc/w_pkup.wav",
 		{
-			"models/multiplayer/binocs/binocs.md3",
-			"models/multiplayer/binocs/v_binocs.md3",
-			"models/multiplayer/binocs/pu_binocs.md3",
-			0, 0 },
-		
+		"",
+		"",
+		""
+		},
 
-		"icons/iconw_binoculars_1",  // icon
-		"",          // ammo icon
-		"Binoculars",                // pickup
+
+		"icons/iconw_binoculars_1",  
+		"Binoculars",                
 		0, // this should never be picked up
 		IT_WEAPON,
 		WP_BINOCULARS,
 		WP_BINOCULARS,
 		WP_BINOCULARS,
-		"",                      // precache
-		"",                      // sounds
-		{0,0,0,0}
+		WP_BINOCULARS,
+		"",                      
+		"",                     
+		{0,0,0,0,0}
 	},
 
 
@@ -1376,21 +1376,21 @@ weapon_grenadePineapple
 		"weapon_poisongas",
 		"",
 		{
-			"models/multiplayer/gasgrenade/smokegrenade.md3",
-			"models/multiplayer/gasgrenade/v_smokegrenade.md3",
-			0
+		"",
+		"",
+		""
 		},
 
-		"icons/iconw_gasgrenade_1",    // icon
-		"icons/ammo9",               // ammo icon
-		"Poison Gas",    // pickup
+		"icons/iconw_gasgrenade_1",    
+		"Poison Gas",    
 		0,
 		IT_WEAPON,
 		WP_POISON_GAS,
 		WP_POISON_GAS,
 		WP_POISON_GAS,
-		"",                      // precache
-		"",                      // sounds
+		WP_POISON_GAS,
+		"",                      
+		"",                     
 //		{0,0,0,0,0}
 	},
 
@@ -1752,21 +1752,21 @@ model="models/weapons2/mauser/mauser.md3"
 		"weapon_m7",
 		"sound/misc/w_pkup.wav",
 		{
-			"models/multiplayer/m1_garand/m1_garand_3rd.md3",
-			"models/multiplayer/m1_garand/v_m1_garand.md3",
-			"models/multiplayer/mauser/mauser_pickup.md3"
+		"",
+		"",
+		""
 		},
 
-		"icons/iconw_m1_garand_1",       // icon
-		"icons/ammo10",              // ammo icon
-		"m7",                // pickup
+		"icons/iconw_m1_garand_1",       
+		"m7",                
 		200,
 		IT_WEAPON,
 		WP_M7,
 		WP_M7,
 		WP_M7,
-		"",                          // precache
-		"",                          // sounds
+		WP_M7,
+		"",                          
+		"",                         
 //		{0,0,0,0,0}
 	},
 
@@ -1862,21 +1862,22 @@ model="models/multiplayer/m/mg42_3rd.md3"
 	{
 		"weapon_browning",
 		"sound/misc/w_pkup.wav",
-		{   "models/weapons2/browning/brown30cal_3rd.md3",
-			"models/weapons2/browning/v_brown30cal.md3",
-			"models/weapons2/browning/brow30cal_pickup.md3",
-			0, 0 },
+		{   
+		"",
+		"",
+		""
+		},
 
-		"icons/iconw_browning",   // icon
-		"icons/ammo8",           // ammo icon
-		"browning",             // pickup
+		"icons/iconw_browning",   
+		"browning",            
 		700,
 		IT_WEAPON,
 		WP_BROWNING,
 		WP_BAR,
 		WP_BROWNING,
-		"",                      // precache
-		"",                      // sounds
+		WP_BROWNING,
+		"",                     
+		"",                     
 		{0,0,0,0,0}
 	},
 
@@ -1940,20 +1941,22 @@ model="models/weapons2/p38/luger.md3"
 		{
 		"weapon_grenadesmoke",
 		"sound/misc/w_pkup.wav",
-		{   "models/multiplayer/smokegrenade/smokegrenade.md3",
-			"models/multiplayer/smokegrenade/v_smokegrenade.md3",
-			0, 0, 0},
+		{   
+		"models/multiplayer/smokegrenade/smokegrenade.md3",
+		"models/multiplayer/smokegrenade/v_smokegrenade.md3",
+		""
+		},
 
-		"icons/iconw_smokegrenade_1",    // icon
-		"icons/ammo2",   // ammo icon
-		"smokeGrenade",              // pickup
+		"icons/iconw_smokegrenade_1",    
+		"smokeGrenade",              
 		50,
 		IT_WEAPON,
 		WP_SMOKE_GRENADE,
 		WP_SMOKE_GRENADE,
 		WP_SMOKE_GRENADE,
-		"",                      // precache
-		"sound/weapons/grenade/hgrenb1a.wav sound/weapons/grenade/hgrenb2a.wav",             // sounds
+		WP_SMOKE_GRENADE,
+		"",                      
+		"sound/weapons/grenade/hgrenb1a.wav sound/weapons/grenade/hgrenb2a.wav",           
 		{0,0,0,0,0}
 	},
 
@@ -1972,18 +1975,20 @@ model="models/weapons2/mauser/mauser.md3"
 		"ammo_m7",
 		"sound/misc/w_pkup.wav",
 		{ "models/powerups/ammo/m7ammo_bag.md3",
-		 0, 0, 0,    0 },
+		0, 
+		0
+		},
 
-		"icons/iconw_m1_garand_1",       // icon
-		"icons/ammo10",              // ammo icon
-		"m7_ammo",                // pickup
+		"icons/iconw_m1_garand_1",       
+		"m7_ammo",               
 		200,
 		IT_AMMO,
+		WP_NONE,
 		WP_M7,
 		WP_M7,
 		WP_M7,
-		"",                          // precache
-		"",                          // sounds
+		"",                          
+		"",                         
 		{5,4,3,2,2}
 	},
 
@@ -2054,18 +2059,21 @@ model="models/powerups/ammo/barammo_l.md3"
 {
 		"ammo_barammo_box",
 		"sound/misc/am_pkup.wav",
-		{ "models/powerups/ammo/barammo_box.md3",
-		  0, 0, 0,    0 },
-		"icons/iconw_luger_1", // icon
-		NULL,               // ammo icon
-		"barammobox",           // pickup			//----(SA)	changed
+		{ 
+		"models/powerups/ammo/barammo_box.md3",
+		0, 
+		0
+		},
+		"icons/iconw_luger_1", 
+		"barammobox",           
 		60,
 		IT_AMMO,
+		WP_NONE,
 		WP_BAR,
 		WP_M1GARAND,
 		WP_BAR,
-		"",                  // precache
-		"",                  // sounds
+		"",                  
+		"",                  
 		{150,100,100,100,100}	
 	},
 
@@ -2639,18 +2647,21 @@ model="models/ammo/smoke_grenade/smoke_grenade.md3"
 	{
 		"ammo_poison_gas",
 		"sound/misc/am_pkup.wav",
-		{ "models/powerups/ammo/grengas_bag.md3",
-		  0, 0 },
-		"", // icon
-		NULL,               // ammo icon
-		"Poison Gas", // pickup			//----(SA)	changed
+		{ 
+		"models/powerups/ammo/grengas_bag.md3",
+		0, 
+		0 
+		},
+		"", 
+		"Poison Gas", 
 		1,
 		IT_AMMO,
+		WP_NONE,
 		WP_POISON_GAS,
 		WP_POISON_GAS,
 		WP_POISON_GAS,
-		"",                  // precache
-		"",                  // sounds
+		"",                  
+		"",                  
 	   {2,2,2,2,2}
 	},
 
@@ -2663,18 +2674,21 @@ model="models/powerups/ammo/dynamite.md3"
 	{
 		"ammo_smokegrenade",
 		"sound/misc/am_pkup.wav",
-		{ "models/powerups/ammo/smokegren_bag.md3",
-		  0, 0, 0,    0 },
-		"icons/icona_dynamite",  // icon
-		NULL,                   // ammo icon
-		"Smoke Grenades",              // pickup
+		{ 
+		"models/powerups/ammo/smokegren_bag.md3",
+		0, 
+		0
+		},
+		"icons/icona_dynamite",  
+		"Smoke Grenades",            
 		1,
 		IT_AMMO,
+		WP_NONE,
 		WP_SMOKE_GRENADE,
 		WP_SMOKE_GRENADE,
 		WP_SMOKE_GRENADE,
-		"",                      // precache
-		"",                      // sounds
+		"",                      
+		"",                      
 		{1,1,1,1,1}
 	},
 
