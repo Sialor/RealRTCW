@@ -4369,6 +4369,11 @@ char *BG_GetWeaponFilename( weapon_t weaponNum )
 		case WP_GRENADE_LAUNCHER:  return "grenade.weap";
 		case WP_GRENADE_PINEAPPLE: return "pineapple.weap";
 		case WP_DYNAMITE:          return "dynamite.weap";
+		case WP_BROWNING:          return "browning.weap";
+		case WP_BINOCULARS:        return "binocs.weap";
+		case WP_SMOKE_GRENADE:     return "airstrike.weap";
+		case WP_POISON_GAS:        return "gas.weap";
+		case WP_M7:                return "m7.weap";
 		case WP_NONE:
 		case WP_MONSTER_ATTACK1:
 		case WP_MONSTER_ATTACK2:
